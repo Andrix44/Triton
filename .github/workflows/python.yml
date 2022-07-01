@@ -221,7 +221,7 @@ jobs:
           make
           cd lib
           find ../../ | grep libbtor2parser.a
-          ar cqT libbitwuzlam.a libbitwuzla.a ../../deps/install/lib64/libbtor2parser.a ../../deps/cadical/build/libcadical.a ../../../gmp-6.2.1/.libs/libgmp.a && echo -e 'create libbitwuzlam.a\naddlib libbitwuzlam.a\nsave\nend' | ar -M
+          ar cqT libbitwuzlam.a libbitwuzla.a ../../deps/install/lib64/libbtor2parser.a ../../deps/cadical/build/libcadical.a ../../../gmp-6.2.1/.libs/libgmp.a
           mv libbitwuzlam.a libbitwuzla.a
           cd ..
           make install
