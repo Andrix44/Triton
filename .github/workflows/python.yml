@@ -215,11 +215,13 @@ jobs:
           git clone https://github.com/bitwuzla/bitwuzla.git
           cd bitwuzla
           ./contrib/setup-cadical.sh
+          ./contrib/setup-btor2tools.sh
           CMAKE_OPTS="-DCMAKE_POSITION_INDEPENDENT_CODE=ON" ./configure.sh --prefix $(pwd)/install --no-symfpu --no-testing --only-cadical
           cd build
           make
           cd lib
-          ar cqT libbitwuzlam.a libbitwuzla.a ../../deps/cadical/build/libcadical.a ../../../gmp-6.2.1/.libs/libgmp.a && echo -e 'create libbitwuzlam.a\naddlib libbitwuzlam.a\nsave\nend' | ar -M
+          find ../../ | grep libbtor2parser.a
+          ar cqT libbitwuzlam.a libbitwuzla.a ../../deps/install/lib64/libbtor2parser.a ../../deps/cadical/build/libcadical.a ../../../gmp-6.2.1/.libs/libgmp.a && echo -e 'create libbitwuzlam.a\naddlib libbitwuzlam.a\nsave\nend' | ar -M
           mv libbitwuzlam.a libbitwuzla.a
           cd ..
           make install
